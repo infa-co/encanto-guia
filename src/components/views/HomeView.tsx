@@ -66,7 +66,7 @@ const HomeView = ({ onGoToExperiences }: Props) => {
             Bem-vindo ao <em className="not-italic text-accent">Encantos do Rancho</em>
           </h2>
           <p className="mt-3 text-[14px] leading-relaxed text-primary-foreground/80 max-w-[34ch]">
-            Este é o seu guia completo da hospedagem. Selecione seu chalé para acessar instruções, experiências e tudo para aproveitar ao máximo sua estadia.
+            Este é o seu guia completo da hospedagem. Aqui você encontra instruções, experiências e tudo para aproveitar ao máximo sua estadia.
           </p>
 
           {/* BOTÃO PÍLULA com ornamentos */}
@@ -75,27 +75,10 @@ const HomeView = ({ onGoToExperiences }: Props) => {
             className="mt-9 group inline-flex items-center gap-3 rounded-full border border-accent/60 bg-primary/40 backdrop-blur-sm px-7 h-14 text-primary-foreground hover:bg-accent hover:border-accent transition-all active:scale-[0.98] shadow-copper"
           >
             <Sparkles className="h-4 w-4 text-accent group-hover:text-accent-foreground" strokeWidth={1.5} />
-            <span className="font-display text-lg tracking-wide">Selecione seu chalé</span>
+            <span className="font-display text-lg tracking-wide">Ver experiências</span>
             <Sparkles className="h-4 w-4 text-accent group-hover:text-accent-foreground" strokeWidth={1.5} />
           </button>
         </div>
-      </section>
-
-      {/* CARD DO CHALÉ */}
-      <section>
-        <SectionTitle eyebrow="Sua acomodação" title="Seu chalé" />
-        <article className="rounded-2xl bg-card overflow-hidden shadow-elegant border border-border/50">
-          <div className="relative h-52 overflow-hidden">
-            <img src={heroImg} alt={chalet.name} loading="lazy" className="h-full w-full object-cover" />
-            <span className="absolute top-3 left-3 rounded-full bg-background/90 backdrop-blur px-3 py-1 text-[11px] font-semibold text-primary">Sua estadia</span>
-          </div>
-          <div className="p-5">
-            <h3 className="font-display text-2xl text-primary leading-tight">{chalet.shortName}</h3>
-            <div className="mt-1.5 flex items-center gap-1.5 text-sm text-muted-foreground">
-              <MapPin className="h-3.5 w-3.5" /> {chalet.location}
-            </div>
-          </div>
-        </article>
       </section>
 
       {/* ORIENTAÇÕES */}
