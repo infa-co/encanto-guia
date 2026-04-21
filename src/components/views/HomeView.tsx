@@ -1,4 +1,4 @@
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, Sparkles } from "lucide-react";
 import heroImg from "@/assets/chalet-hero.jpg";
 import { chalet, orientacoes, comodidades, regras } from "@/data/chalet";
 import SectionTitle from "@/components/SectionTitle";
@@ -25,63 +25,73 @@ const HomeView = ({ onGoToExperiences }: Props) => {
 
   return (
     <div className="space-y-10 animate-fade-up">
-      {/* HERO */}
-      <section className="relative -mx-4 -mt-4">
-        <div className="relative h-[60vh] min-h-[460px] overflow-hidden hero-overlay">
-          <img
-            src={heroImg}
-            alt="Chalé Encantos do Rancho ao entardecer em Rancho Queimado"
-            className="absolute inset-0 h-full w-full object-cover"
-            width={1280}
-            height={896}
-          />
-          <div className="absolute top-6 inset-x-0 z-10 flex flex-col items-center text-primary-foreground">
-            <p className="text-[10px] uppercase tracking-[0.35em] opacity-80">Bem-vindo ao</p>
-            <h1 className="mt-1 font-display text-3xl text-center px-6 leading-tight text-balance">
-              {chalet.name}
-            </h1>
+      {/* HERO IMERSIVO — fundo verde escuro full-bleed */}
+      <section className="relative -mx-4 -mt-4 gradient-forest text-primary-foreground overflow-hidden">
+        {/* textura sutil de pontos dourados */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.18]"
+          style={{
+            backgroundImage:
+              "radial-gradient(hsl(var(--accent) / 0.6) 1px, transparent 1px), radial-gradient(hsl(var(--accent-soft) / 0.4) 1px, transparent 1px)",
+            backgroundSize: "42px 42px, 28px 28px",
+            backgroundPosition: "0 0, 14px 14px",
+          }}
+        />
+        {/* glow dourado no topo */}
+        <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
+
+        <div className="relative z-10 flex flex-col items-center text-center px-6 pt-14 pb-12 min-h-[88vh]">
+          {/* MONOGRAMA */}
+          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-accent/50 bg-primary/30 backdrop-blur-sm shadow-copper">
+            <span className="font-display text-3xl text-accent leading-none">ER</span>
           </div>
-          <div className="absolute bottom-0 inset-x-0 z-10 p-5 text-primary-foreground">
-            <div className="flex items-center gap-1.5 text-xs uppercase tracking-widest opacity-90 mb-2">
-              <MapPin className="h-3.5 w-3.5" /> {chalet.location}
-            </div>
-            <p className="font-display text-2xl leading-snug text-balance max-w-[22ch]">
-              Seu refúgio entre a serra e o silêncio.
-            </p>
+
+          {/* NOME */}
+          <h1 className="mt-5 font-display text-[2.4rem] leading-[1.05] tracking-wide">
+            ENCANTOS<br />DO RANCHO
+          </h1>
+          <p className="mt-2 text-[10px] uppercase tracking-[0.4em] text-accent-soft">
+            Chalé de luxo · {chalet.location}
+          </p>
+
+          {/* DIVISOR DECORATIVO */}
+          <div className="mt-10 flex items-center gap-3 w-full max-w-[220px]">
+            <span className="h-px flex-1 bg-accent/40" />
+            <span className="text-accent text-lg leading-none">⌂</span>
+            <span className="h-px flex-1 bg-accent/40" />
           </div>
+
+          {/* WELCOME */}
+          <h2 className="mt-8 font-display text-2xl leading-snug text-balance">
+            Bem-vindo ao <em className="not-italic text-accent">Encantos do Rancho</em>
+          </h2>
+          <p className="mt-3 text-[14px] leading-relaxed text-primary-foreground/80 max-w-[34ch]">
+            Este é o seu guia completo da hospedagem. Selecione seu chalé para acessar instruções, experiências e tudo para aproveitar ao máximo sua estadia.
+          </p>
+
+          {/* BOTÃO PÍLULA com ornamentos */}
+          <button
+            onClick={onGoToExperiences}
+            className="mt-9 group inline-flex items-center gap-3 rounded-full border border-accent/60 bg-primary/40 backdrop-blur-sm px-7 h-14 text-primary-foreground hover:bg-accent hover:border-accent transition-all active:scale-[0.98] shadow-copper"
+          >
+            <Sparkles className="h-4 w-4 text-accent group-hover:text-accent-foreground" strokeWidth={1.5} />
+            <span className="font-display text-lg tracking-wide">Selecione seu chalé</span>
+            <Sparkles className="h-4 w-4 text-accent group-hover:text-accent-foreground" strokeWidth={1.5} />
+          </button>
         </div>
       </section>
 
-      {/* WELCOME */}
-      <section className="px-1">
-        <p className="text-[15px] leading-relaxed text-foreground/85">
-          Este é o seu guia completo da hospedagem. Aqui você encontra instruções, experiências e tudo para aproveitar ao máximo sua estadia.
-        </p>
-        <button
-          onClick={onGoToExperiences}
-          className="mt-5 group w-full inline-flex items-center justify-between gap-3 rounded-2xl gradient-forest text-primary-foreground px-5 py-4 shadow-elegant hover:shadow-copper transition-all active:scale-[0.99]"
-        >
-          <span className="text-left">
-            <span className="block text-[10px] uppercase tracking-[0.25em] opacity-70">Reserve agora</span>
-            <span className="block font-display text-lg">Conheça as experiências</span>
-          </span>
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-copper">
-            <ArrowRight className="h-4 w-4" />
-          </span>
-        </button>
-      </section>
-
-      {/* SELECIONAR CHALÉ */}
+      {/* CARD DO CHALÉ */}
       <section>
-        <SectionTitle eyebrow="Sua acomodação" title="Selecione seu chalé" />
-        <article className="rounded-2xl bg-card overflow-hidden shadow-card border border-border/50">
-          <div className="relative h-44 overflow-hidden">
+        <SectionTitle eyebrow="Sua acomodação" title="Seu chalé" />
+        <article className="rounded-2xl bg-card overflow-hidden shadow-elegant border border-border/50">
+          <div className="relative h-52 overflow-hidden">
             <img src={heroImg} alt={chalet.name} loading="lazy" className="h-full w-full object-cover" />
             <span className="absolute top-3 left-3 rounded-full bg-background/90 backdrop-blur px-3 py-1 text-[11px] font-semibold text-primary">Sua estadia</span>
           </div>
-          <div className="p-4">
-            <h3 className="font-display text-xl text-primary">{chalet.shortName}</h3>
-            <div className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
+          <div className="p-5">
+            <h3 className="font-display text-2xl text-primary leading-tight">{chalet.shortName}</h3>
+            <div className="mt-1.5 flex items-center gap-1.5 text-sm text-muted-foreground">
               <MapPin className="h-3.5 w-3.5" /> {chalet.location}
             </div>
           </div>
