@@ -6,6 +6,7 @@ import {
   ArrowRight, Clock, Home as HomeIcon, AlertTriangle, Ban, Send, Truck, ChevronDown,
 } from "lucide-react";
 import heroImg from "@/assets/chalet-hero.jpg";
+import logoImg from "@/assets/chalet-logo.jpg";
 import { chalet, orientacoes, comodidades, regras, parceiros, emergencia } from "@/data/chalet";
 
 const iconMap: Record<string, typeof Flame> = {
@@ -42,8 +43,8 @@ const HomeView = ({ onGoToExperiences }: Props) => {
         <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
 
         <div className="relative z-10 flex flex-col items-center text-center px-6 pt-14 pb-10">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-accent/50 bg-primary/30 backdrop-blur-sm shadow-copper">
-            <span className="font-display text-3xl text-accent leading-none">PM</span>
+          <div className="flex h-24 w-24 items-center justify-center rounded-full border border-accent/40 bg-primary/40 backdrop-blur-sm shadow-copper overflow-hidden">
+            <img src={logoImg} alt="Logo Chalé Pé de Morro" className="h-full w-full object-cover" />
           </div>
 
           <h1 className="mt-5 font-display text-[2.4rem] leading-[1.05] tracking-wide">
