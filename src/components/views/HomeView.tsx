@@ -171,13 +171,30 @@ const HomeView = ({ onGoToExperiences }: Props) => {
         <div className="mt-4 divide-y divide-accent/15">
           {orientacoes.map((o) => {
             const Icon = iconMap[o.icon] || Flame;
+            const isOpen = openOrient === o.title;
             return (
-              <div key={o.title} className="py-4 first:pt-0 last:pb-0">
-                <div className="flex items-center gap-2 text-accent">
-                  <Icon className="h-4 w-4" strokeWidth={1.75} />
-                  <h3 className="font-display text-base text-primary-foreground">{o.title}</h3>
+              <div key={o.title} className="py-1">
+                <button
+                  onClick={() => setOpenOrient(isOpen ? null : o.title)}
+                  className="w-full flex items-center justify-between gap-3 py-3 text-left active:opacity-80 transition"
+                  aria-expanded={isOpen}
+                >
+                  <span className="flex items-center gap-2 text-accent">
+                    <Icon className="h-4 w-4" strokeWidth={1.75} />
+                    <span className="font-display text-base text-primary-foreground">{o.title}</span>
+                  </span>
+                  <ChevronDown
+                    className={`h-4 w-4 text-accent shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                    strokeWidth={2}
+                  />
+                </button>
+                <div
+                  className={`grid transition-all duration-300 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100 pb-3" : "grid-rows-[0fr] opacity-0"}`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="text-[13px] leading-relaxed text-primary-foreground/80 pl-6">{o.text}</p>
+                  </div>
                 </div>
-                <p className="mt-2 text-[13px] leading-relaxed text-primary-foreground/80 pl-6">{o.text}</p>
               </div>
             );
           })}
