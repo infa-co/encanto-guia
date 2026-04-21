@@ -43,11 +43,11 @@ const HomeView = ({ onGoToExperiences }: Props) => {
 
         <div className="relative z-10 flex flex-col items-center text-center px-6 pt-14 pb-10">
           <div className="flex h-20 w-20 items-center justify-center rounded-full border border-accent/50 bg-primary/30 backdrop-blur-sm shadow-copper">
-            <span className="font-display text-3xl text-accent leading-none">ER</span>
+            <span className="font-display text-3xl text-accent leading-none">PM</span>
           </div>
 
           <h1 className="mt-5 font-display text-[2.4rem] leading-[1.05] tracking-wide">
-            ENCANTOS<br />DO RANCHO
+            CHALÉ<br />PÉ DE MORRO
           </h1>
           <p className="mt-2 text-[10px] uppercase tracking-[0.4em] text-accent-soft">
             Chalé de luxo · {chalet.location}
@@ -60,7 +60,7 @@ const HomeView = ({ onGoToExperiences }: Props) => {
           </div>
 
           <h2 className="mt-6 font-display text-2xl leading-snug text-balance">
-            Bem-vindo ao <em className="not-italic text-accent">Encantos do Rancho</em>
+            Bem-vindo ao <em className="not-italic text-accent">Pé de Morro</em>
           </h2>
           <p className="mt-3 text-[13px] leading-relaxed text-primary-foreground/80 max-w-[34ch]">
             Seu guia completo de hospedagem. Toque no chalé abaixo para explorar tudo.
