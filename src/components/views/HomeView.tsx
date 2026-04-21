@@ -81,7 +81,7 @@ const HomeView = ({ onGoToExperiences }: Props) => {
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent" />
             </div>
             <div className="px-5 pt-3 pb-5 text-center">
-              <h3 className="font-display text-2xl text-primary-foreground">Chalé Encantos</h3>
+              <h3 className="font-display text-2xl text-primary-foreground">Chalé Pé de Morro</h3>
               <p className="mt-1 text-xs text-primary-foreground/75 flex items-center justify-center gap-1.5">
                 <MapPin className="h-3 w-3 text-accent" /> Rancho Queimado · SC
               </p>
