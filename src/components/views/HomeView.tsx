@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import {
   Wifi, Copy, Check, MapPin, Phone, Instagram, Shield, Ambulance, Flame,
   Droplets, Waves, Tv, BedDouble, Trees, Coffee, MessageCircle, Sparkles,
-  ArrowRight, Clock, Home as HomeIcon, AlertTriangle, Ban, Send, Truck,
+  ArrowRight, Clock, Home as HomeIcon, AlertTriangle, Ban, Send, Truck, ChevronDown,
 } from "lucide-react";
 import heroImg from "@/assets/chalet-hero.jpg";
 import { chalet, orientacoes, comodidades, regras, parceiros, emergencia } from "@/data/chalet";
