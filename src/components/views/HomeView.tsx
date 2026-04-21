@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import {
   Wifi, Copy, Check, MapPin, Phone, Instagram, Shield, Ambulance, Flame,
   Droplets, Waves, Tv, BedDouble, Trees, Coffee, MessageCircle, Sparkles,
-  ArrowRight, Clock, Home as HomeIcon, AlertTriangle, Ban, Send, Truck,
+  ArrowRight, Clock, Home as HomeIcon, AlertTriangle, Ban, Send, Truck, ChevronDown,
 } from "lucide-react";
 import heroImg from "@/assets/chalet-hero.jpg";
 import { chalet, orientacoes, comodidades, regras, parceiros, emergencia } from "@/data/chalet";
@@ -17,6 +17,7 @@ interface Props { onGoToExperiences: () => void; }
 const HomeView = ({ onGoToExperiences }: Props) => {
   const [copiedSsid, setCopiedSsid] = useState(false);
   const [copiedPwd, setCopiedPwd] = useState(false);
+  const [openOrient, setOpenOrient] = useState<string | null>(orientacoes[0]?.title ?? null);
 
   const copyText = async (text: string, kind: "ssid" | "pwd") => {
     await navigator.clipboard.writeText(text);
@@ -42,11 +43,11 @@ const HomeView = ({ onGoToExperiences }: Props) => {
 
         <div className="relative z-10 flex flex-col items-center text-center px-6 pt-14 pb-10">
           <div className="flex h-20 w-20 items-center justify-center rounded-full border border-accent/50 bg-primary/30 backdrop-blur-sm shadow-copper">
-            <span className="font-display text-3xl text-accent leading-none">ER</span>
+            <span className="font-display text-3xl text-accent leading-none">PM</span>
           </div>
 
           <h1 className="mt-5 font-display text-[2.4rem] leading-[1.05] tracking-wide">
-            ENCANTOS<br />DO RANCHO
+            CHALÉ<br />PÉ DE MORRO
           </h1>
           <p className="mt-2 text-[10px] uppercase tracking-[0.4em] text-accent-soft">
             Chalé de luxo · {chalet.location}
@@ -59,7 +60,7 @@ const HomeView = ({ onGoToExperiences }: Props) => {
           </div>
 
           <h2 className="mt-6 font-display text-2xl leading-snug text-balance">
-            Bem-vindo ao <em className="not-italic text-accent">Encantos do Rancho</em>
+            Bem-vindo ao <em className="not-italic text-accent">Pé de Morro</em>
           </h2>
           <p className="mt-3 text-[13px] leading-relaxed text-primary-foreground/80 max-w-[34ch]">
             Seu guia completo de hospedagem. Toque no chalé abaixo para explorar tudo.
@@ -73,14 +74,14 @@ const HomeView = ({ onGoToExperiences }: Props) => {
             className="group block w-full overflow-hidden rounded-3xl border border-accent/40 bg-primary/40 backdrop-blur-sm shadow-elegant active:scale-[0.99] transition-all"
           >
             <div className="relative h-56 overflow-hidden">
-              <img src={heroImg} alt="Chalé Encantos do Rancho" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img src={heroImg} alt="Chalé Pé de Morro" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute top-3 right-3 rounded-full bg-primary/70 backdrop-blur px-3 py-1 text-[10px] uppercase tracking-widest border border-accent/40">
                 Rancho Queimado · SC
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent" />
             </div>
             <div className="px-5 pt-3 pb-5 text-center">
-              <h3 className="font-display text-2xl text-primary-foreground">Chalé Encantos</h3>
+              <h3 className="font-display text-2xl text-primary-foreground">Chalé Pé de Morro</h3>
               <p className="mt-1 text-xs text-primary-foreground/75 flex items-center justify-center gap-1.5">
                 <MapPin className="h-3 w-3 text-accent" /> Rancho Queimado · SC
               </p>
@@ -170,13 +171,30 @@ const HomeView = ({ onGoToExperiences }: Props) => {
         <div className="mt-4 divide-y divide-accent/15">
           {orientacoes.map((o) => {
             const Icon = iconMap[o.icon] || Flame;
+            const isOpen = openOrient === o.title;
             return (
-              <div key={o.title} className="py-4 first:pt-0 last:pb-0">
-                <div className="flex items-center gap-2 text-accent">
-                  <Icon className="h-4 w-4" strokeWidth={1.75} />
-                  <h3 className="font-display text-base text-primary-foreground">{o.title}</h3>
+              <div key={o.title} className="py-1">
+                <button
+                  onClick={() => setOpenOrient(isOpen ? null : o.title)}
+                  className="w-full flex items-center justify-between gap-3 py-3 text-left active:opacity-80 transition"
+                  aria-expanded={isOpen}
+                >
+                  <span className="flex items-center gap-2 text-accent">
+                    <Icon className="h-4 w-4" strokeWidth={1.75} />
+                    <span className="font-display text-base text-primary-foreground">{o.title}</span>
+                  </span>
+                  <ChevronDown
+                    className={`h-4 w-4 text-accent shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                    strokeWidth={2}
+                  />
+                </button>
+                <div
+                  className={`grid transition-all duration-300 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100 pb-3" : "grid-rows-[0fr] opacity-0"}`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="text-[13px] leading-relaxed text-primary-foreground/80 pl-6">{o.text}</p>
+                  </div>
                 </div>
-                <p className="mt-2 text-[13px] leading-relaxed text-primary-foreground/80 pl-6">{o.text}</p>
               </div>
             );
           })}

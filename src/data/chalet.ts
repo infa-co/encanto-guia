@@ -6,14 +6,14 @@ import fondue from "@/assets/exp-fondue.jpg";
 import tabua from "@/assets/exp-tabua.jpg";
 
 export const chalet = {
-  name: "Chalé Encantos do Rancho",
-  shortName: "Encantos do Rancho",
+  name: "Chalé Pé de Morro",
+  shortName: "Pé de Morro",
   location: "Rancho Queimado · SC",
   // Use o número do anfitrião com DDI/DDD (apenas dígitos)
   whatsapp: "5548999999999",
   instagram: "https://instagram.com/",
   mapsUrl: "https://maps.google.com/?q=Rancho+Queimado+SC",
-  wifi: { ssid: "EncantosDoRancho", password: "natureza2024" },
+  wifi: { ssid: "PeDeMorro", password: "natureza2024" },
 };
 
 export type Experience = {
