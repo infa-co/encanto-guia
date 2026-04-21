@@ -74,7 +74,7 @@ const HomeView = ({ onGoToExperiences }: Props) => {
             className="group block w-full overflow-hidden rounded-3xl border border-accent/40 bg-primary/40 backdrop-blur-sm shadow-elegant active:scale-[0.99] transition-all"
           >
             <div className="relative h-56 overflow-hidden">
-              <img src={heroImg} alt="Chalé Encantos do Rancho" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img src={heroImg} alt="Chalé Pé de Morro" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute top-3 right-3 rounded-full bg-primary/70 backdrop-blur px-3 py-1 text-[10px] uppercase tracking-widest border border-accent/40">
                 Rancho Queimado · SC
               </div>
