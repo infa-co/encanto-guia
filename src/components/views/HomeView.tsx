@@ -17,6 +17,7 @@ interface Props { onGoToExperiences: () => void; }
 const HomeView = ({ onGoToExperiences }: Props) => {
   const [copiedSsid, setCopiedSsid] = useState(false);
   const [copiedPwd, setCopiedPwd] = useState(false);
+  const [openOrient, setOpenOrient] = useState<string | null>(orientacoes[0]?.title ?? null);
 
   const copyText = async (text: string, kind: "ssid" | "pwd") => {
     await navigator.clipboard.writeText(text);
