@@ -23,6 +23,14 @@ export const parceiroGuia = {
   domain: "guiaranchoqueimado.com.br",
 };
 
+export const pacoteGuiaRQ = {
+  nome: "Pacote Guia RQ",
+  descricao: "Viva o melhor de Rancho Queimado em um único pacote",
+  precoOriginal: "R$ 230",
+  precoPromocional: "R$ 77",
+  url: "https://guiaranchoqueimado.com.br/index.html",
+};
+
 export const chalesUnidades = [
   { nome: "Chalé Pomar", ssid: "chale 01 encantado", senha: "encantado" },
   { nome: "Chalé Bosque", ssid: "chale 02 ap360", senha: "88026612" },
