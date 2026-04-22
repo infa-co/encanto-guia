@@ -28,7 +28,7 @@ export const pacoteGuiaRQ = {
   descricao: "Viva o melhor de Rancho Queimado em um único pacote",
   precoOriginal: "R$ 230",
   precoPromocional: "R$ 77",
-  url: "https://guiaranchoqueimado.com.br/index.html",
+  url: "https://guiaranchoqueimado.com.br/pages/resumo.html?pacote=rancho-completo",
 };
 
 export const chalesUnidades = [
