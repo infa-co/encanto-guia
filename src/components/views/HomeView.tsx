@@ -140,9 +140,9 @@ const HomeView = ({ onGoToExperiences }: Props) => {
         <div className="flex items-center gap-2 text-sm font-display">
           <MapPin className="h-4 w-4 text-accent" /> Localização
         </div>
-        <h3 className="mt-3 font-display text-xl">Rancho Queimado, SC</h3>
+        <h3 className="mt-3 font-display text-xl">Queimada Grande, Rancho Queimado · SC</h3>
         <p className="mt-2 text-[13px] leading-relaxed text-primary-foreground/80">
-          O chalé fica a 15 minutos do centro de Rancho Queimado, em estrada parcialmente asfaltada. Recomendamos chegar antes do entardecer no primeiro dia. Salve a rota offline.
+          O chalé fica em Queimada Grande, Rancho Queimado. Recomendamos chegar antes do entardecer no primeiro dia. Salve a rota offline antes de subir a serra.
         </p>
         <a
           href={chalet.mapsUrl}
@@ -223,11 +223,12 @@ const HomeView = ({ onGoToExperiences }: Props) => {
                 <div>
                   <p className="text-sm font-semibold text-destructive">{r}</p>
                   <p className="mt-1 text-xs text-destructive/80 leading-relaxed">
-                    {i === 0 && "Por favor, respeite o horário para que possamos preparar o chalé para os próximos hóspedes."}
-                    {i === 1 && "Por segurança, nunca coloque roupas ou objetos sobre o calefator a pellet."}
+                    {i === 0 && "A partir das 14h o chalé estará pronto para receber você."}
+                    {i === 1 && "Por favor, respeite o horário para que possamos preparar o chalé para os próximos hóspedes."}
                     {i === 2 && "O cheiro permanece e prejudica a experiência dos próximos hóspedes."}
-                    {i === 3 && "Mantenha a tranquilidade do ambiente e respeite a vizinhança."}
-                    {i === 4 && "Entre em contato com antecedência para verificarmos a possibilidade."}
+                    {i === 3 && "Preserve o sossego do ambiente e respeite a vizinhança."}
+                    {i === 4 && "Por segurança, nunca coloque roupas ou objetos sobre o calefator/lareira."}
+                    {i === 5 && "Mantemos um ambiente tranquilo e familiar para todos os hóspedes."}
                   </p>
                 </div>
               </div>
@@ -291,7 +292,7 @@ const HomeView = ({ onGoToExperiences }: Props) => {
         <div className="rounded-3xl gradient-forest text-primary-foreground p-6 text-center shadow-elegant border border-accent/20">
           <p className="text-[10px] uppercase tracking-[0.3em] opacity-80">Compartilhe a experiência</p>
           <h3 className="mt-1 font-display text-2xl">Siga a gente</h3>
-          <p className="mt-1 text-sm opacity-85">Marque @encantosdorancho nos seus stories.</p>
+          <p className="mt-1 text-sm opacity-85">Marque @ochaleranchoqueimado nos seus stories.</p>
           <a
             href={chalet.instagram}
             target="_blank"
