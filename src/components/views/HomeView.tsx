@@ -95,36 +95,43 @@ const HomeView = ({ onGoToExperiences }: Props) => {
         </div>
       </section>
 
-      {/* WI-FI — card escuro */}
+      {/* WI-FI — card escuro com dois chalés */}
       <section className="rounded-3xl gradient-forest text-primary-foreground p-5 shadow-elegant border border-accent/20">
         <div className="flex items-center gap-2 text-sm font-display">
           <Wifi className="h-4 w-4 text-accent" /> Wi-Fi
         </div>
-        <div className="mt-4 space-y-2.5">
-          <button
-            onClick={() => copyText(chalet.wifi.ssid, "ssid")}
-            className="w-full flex items-center justify-between rounded-2xl bg-primary-foreground/5 border border-accent/20 px-4 py-3 active:scale-[0.99] transition"
-          >
-            <span className="text-xs uppercase tracking-widest opacity-70">Rede</span>
-            <span className="flex items-center gap-2">
-              <span className="font-mono text-sm">{chalet.wifi.ssid}</span>
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                {copiedSsid ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-              </span>
-            </span>
-          </button>
-          <button
-            onClick={() => copyText(chalet.wifi.password, "pwd")}
-            className="w-full flex items-center justify-between rounded-2xl bg-primary-foreground/5 border border-accent/20 px-4 py-3 active:scale-[0.99] transition"
-          >
-            <span className="text-xs uppercase tracking-widest opacity-70">Senha</span>
-            <span className="flex items-center gap-2">
-              <span className="font-mono text-sm">{chalet.wifi.password}</span>
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                {copiedPwd ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-              </span>
-            </span>
-          </button>
+        <div className="mt-4 space-y-5">
+          {chalesUnidades.map((unidade) => (
+            <div key={unidade.nome}>
+              <p className="text-[11px] uppercase tracking-[0.25em] text-accent mb-2">{unidade.nome}</p>
+              <div className="space-y-2.5">
+                <button
+                  onClick={() => copyText(unidade.ssid, `${unidade.nome}-ssid`)}
+                  className="w-full flex items-center justify-between rounded-2xl bg-primary-foreground/5 border border-accent/20 px-4 py-3 active:scale-[0.99] transition"
+                >
+                  <span className="text-xs uppercase tracking-widest opacity-70">Rede</span>
+                  <span className="flex items-center gap-2">
+                    <span className="font-mono text-sm">{unidade.ssid}</span>
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                      {copiedKey === `${unidade.nome}-ssid` ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                    </span>
+                  </span>
+                </button>
+                <button
+                  onClick={() => copyText(unidade.senha, `${unidade.nome}-pwd`)}
+                  className="w-full flex items-center justify-between rounded-2xl bg-primary-foreground/5 border border-accent/20 px-4 py-3 active:scale-[0.99] transition"
+                >
+                  <span className="text-xs uppercase tracking-widest opacity-70">Senha</span>
+                  <span className="flex items-center gap-2">
+                    <span className="font-mono text-sm">{unidade.senha}</span>
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                      {copiedKey === `${unidade.nome}-pwd` ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                    </span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
