@@ -18,14 +18,13 @@ const iconMap: Record<string, typeof Flame> = {
 interface Props { onGoToExperiences: () => void; }
 
 const HomeView = ({ onGoToExperiences }: Props) => {
-  const [copiedSsid, setCopiedSsid] = useState(false);
-  const [copiedPwd, setCopiedPwd] = useState(false);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [openOrient, setOpenOrient] = useState<string | null>(orientacoes[0]?.title ?? null);
 
-  const copyText = async (text: string, kind: "ssid" | "pwd") => {
+  const copyText = async (text: string, key: string) => {
     await navigator.clipboard.writeText(text);
-    if (kind === "ssid") { setCopiedSsid(true); setTimeout(() => setCopiedSsid(false), 2000); }
-    else { setCopiedPwd(true); setTimeout(() => setCopiedPwd(false), 2000); }
+    setCopiedKey(key);
+    setTimeout(() => setCopiedKey(null), 2000);
     toast.success("Copiado!");
   };
 
@@ -45,15 +44,15 @@ const HomeView = ({ onGoToExperiences }: Props) => {
         <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
 
         <div className="relative z-10 flex flex-col items-center text-center px-6 pt-14 pb-10">
-          <div className="flex h-24 w-24 items-center justify-center rounded-full border border-accent/40 bg-primary/40 backdrop-blur-sm shadow-copper overflow-hidden">
-            <img src={logoImg} alt="Logo Chalé Pé de Morro" className="h-full w-full object-cover" />
+          <div className="flex h-24 w-24 items-center justify-center rounded-full border border-accent/40 bg-primary-foreground backdrop-blur-sm shadow-copper overflow-hidden">
+            <img src={logoImg} alt="Logo O Chalé Encantado" className="h-full w-full object-contain p-1" />
           </div>
 
           <h1 className="mt-5 font-display text-[2.4rem] leading-[1.05] tracking-wide">
-            CHALÉ<br />PÉ DE MORRO
+            O CHALÉ<br />ENCANTADO
           </h1>
           <p className="mt-2 text-[10px] uppercase tracking-[0.4em] text-accent-soft">
-            Chalé de luxo · {chalet.location}
+            {chalet.location}
           </p>
 
           <div className="mt-8 flex items-center gap-3 w-full max-w-[220px]">
@@ -63,7 +62,7 @@ const HomeView = ({ onGoToExperiences }: Props) => {
           </div>
 
           <h2 className="mt-6 font-display text-2xl leading-snug text-balance">
-            Bem-vindo ao <em className="not-italic text-accent">Pé de Morro</em>
+            Bem-vindo ao <em className="not-italic text-accent">Chalé Encantado</em>
           </h2>
           <p className="mt-3 text-[13px] leading-relaxed text-primary-foreground/80 max-w-[34ch]">
             Seu guia completo de hospedagem. Toque no chalé abaixo para explorar tudo.
@@ -77,16 +76,16 @@ const HomeView = ({ onGoToExperiences }: Props) => {
             className="group block w-full overflow-hidden rounded-3xl border border-accent/40 bg-primary/40 backdrop-blur-sm shadow-elegant active:scale-[0.99] transition-all"
           >
             <div className="relative h-56 overflow-hidden">
-              <img src={heroImg} alt="Chalé Pé de Morro" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img src={heroImg} alt="O Chalé Encantado" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute top-3 right-3 rounded-full bg-primary/70 backdrop-blur px-3 py-1 text-[10px] uppercase tracking-widest border border-accent/40">
                 Rancho Queimado · SC
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent" />
             </div>
             <div className="px-5 pt-3 pb-5 text-center">
-              <h3 className="font-display text-2xl text-primary-foreground">Chalé Pé de Morro</h3>
+              <h3 className="font-display text-2xl text-primary-foreground">O Chalé Encantado</h3>
               <p className="mt-1 text-xs text-primary-foreground/75 flex items-center justify-center gap-1.5">
-                <MapPin className="h-3 w-3 text-accent" /> Rancho Queimado · SC
+                <MapPin className="h-3 w-3 text-accent" /> Queimada Grande · Rancho Queimado
               </p>
               <p className="mt-3 text-[13px] text-accent inline-flex items-center gap-1.5 font-medium">
                 Toque para explorar <ArrowRight className="h-3.5 w-3.5" />
