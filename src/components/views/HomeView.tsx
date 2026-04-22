@@ -4,13 +4,15 @@ import {
   Wifi, Copy, Check, MapPin, Phone, Instagram, Shield, Ambulance, Flame,
   Droplets, Waves, Tv, BedDouble, Trees, Coffee, MessageCircle, Sparkles,
   ArrowRight, Clock, Home as HomeIcon, AlertTriangle, Ban, Send, Truck, ChevronDown,
+  Wind, Mountain, Beef,
 } from "lucide-react";
 import heroImg from "@/assets/chalet-hero.jpg";
 import logoImg from "@/assets/chalet-logo.jpg";
-import { chalet, orientacoes, comodidades, regras, parceiros, emergencia } from "@/data/chalet";
+import { chalet, chalesUnidades, orientacoes, comodidades, regras, parceiros, emergencia } from "@/data/chalet";
 
 const iconMap: Record<string, typeof Flame> = {
   Flame, Droplets, Waves, Tv, BedDouble, Trees, Wifi, Coffee, Shield, Ambulance,
+  Wind, Mountain, Beef,
 };
 
 interface Props { onGoToExperiences: () => void; }
