@@ -6,15 +6,21 @@ import fondue from "@/assets/exp-fondue.jpg";
 import tabua from "@/assets/exp-tabua.jpg";
 
 export const chalet = {
-  name: "Chalé Pé de Morro",
-  shortName: "Pé de Morro",
-  location: "Rancho Queimado · SC",
+  name: "O Chalé Encantado",
+  shortName: "Chalé Encantado",
+  location: "Queimada Grande · Rancho Queimado · SC",
   // Use o número do anfitrião com DDI/DDD (apenas dígitos)
-  whatsapp: "5548999999999",
-  instagram: "https://instagram.com/",
-  mapsUrl: "https://maps.google.com/?q=Rancho+Queimado+SC",
-  wifi: { ssid: "PeDeMorro", password: "natureza2024" },
+  whatsapp: "5548991107533",
+  instagram: "https://www.instagram.com/ochaleranchoqueimado",
+  mapsUrl: "https://maps.app.goo.gl/xEzkDjpFid6Y5Gbp8",
+  // Compatibilidade — primeiro chalé como padrão
+  wifi: { ssid: "chale 01 encantado", password: "encantado" },
 };
+
+export const chalesUnidades = [
+  { nome: "Chalé Pomar", ssid: "chale 01 encantado", senha: "encantado" },
+  { nome: "Chalé Bosque", ssid: "chale 02 ap360", senha: "88026612" },
+];
 
 export type Experience = {
   id: string;
@@ -69,36 +75,38 @@ export const experiences: Experience[] = [
 ];
 
 export const orientacoes = [
-  { icon: "Flame", title: "Calefator a Pellet", text: "Mantenha a porta fechada durante o uso. Ele opera no automático — não é necessário acrescentar pellets manualmente. Em caso de dúvida, chame pelo WhatsApp." },
-  { icon: "Droplets", title: "Água Quente", text: "Aquecimento a gás. Espere de 30 a 60 segundos para a água esquentar. Mantenha a chama do aquecedor ligada durante a estadia." },
-  { icon: "Waves", title: "Hidromassagem", text: "Encha completamente antes de ligar os jatos. Tempo recomendado de uso: 20 a 30 minutos. Não utilize sabão ou óleos dentro da banheira." },
-  { icon: "Tv", title: "Controles", text: "Controles da TV, Smart, ar e calefator estão na gaveta do criado-mudo do quarto principal." },
+  { icon: "Flame", title: "Lareira", text: "As instruções de uso da lareira estão disponíveis via QR Code dentro do chalé. Em caso de dúvida, chame pelo WhatsApp." },
+  { icon: "Waves", title: "Hidromassagem", text: "As instruções de uso da hidromassagem estão disponíveis via QR Code dentro do chalé. Encha completamente antes de ligar os jatos." },
+  { icon: "Droplets", title: "Água Quente", text: "Pode levar cerca de 40 segundos para a água começar a aquecer. Mantenha a chama do aquecedor ligada durante a estadia." },
+  { icon: "Tv", title: "TV / Controles", text: "Os controles da TV estão no móvel em frente à TV." },
 ];
 
 export const comodidades = [
-  { icon: "Flame", label: "Deck com lareira" },
-  { icon: "BedDouble", label: "Cama king confortável" },
   { icon: "Waves", label: "Hidromassagem" },
-  { icon: "Trees", label: "Vista para natureza" },
-  { icon: "Wifi", label: "Wi-Fi de alta velocidade" },
+  { icon: "Flame", label: "Lareira / Calefator" },
+  { icon: "Wind", label: "Ar-condicionado" },
   { icon: "Coffee", label: "Cozinha equipada" },
+  { icon: "Trees", label: "Deck / área externa" },
+  { icon: "Mountain", label: "Vista para natureza" },
+  { icon: "Beef", label: "Churrasqueira" },
 ];
 
 export const regras = [
+  "Check-in a partir das 14h",
   "Check-out até as 11h",
-  "Não colocar objetos sobre o calefator",
   "Não é permitido fumar dentro do chalé",
+  "Respeitar o silêncio após as 22h",
+  "Não colocar objetos sobre o calefator/lareira",
   "Eventos e festas não são permitidos",
-  "Animais somente com autorização prévia",
 ];
 
 export const checklist = [
-  "Verificar se o calefator está desligado",
+  "Desligar a lareira",
   "Desligar a hidromassagem e os jatos",
-  "Apagar todas as luzes e velas",
-  "Conferir itens pessoais e documentos",
-  "Trancar portas e janelas",
-  "Deixar a chave sobre a mesa da sala",
+  "Desligar o ar-condicionado",
+  "Apagar todas as luzes",
+  "Retirar o lixo",
+  "Conferir pertences pessoais",
 ];
 
 export const parceiros = [

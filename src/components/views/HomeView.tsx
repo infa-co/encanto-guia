@@ -4,26 +4,27 @@ import {
   Wifi, Copy, Check, MapPin, Phone, Instagram, Shield, Ambulance, Flame,
   Droplets, Waves, Tv, BedDouble, Trees, Coffee, MessageCircle, Sparkles,
   ArrowRight, Clock, Home as HomeIcon, AlertTriangle, Ban, Send, Truck, ChevronDown,
+  Wind, Mountain, Beef,
 } from "lucide-react";
 import heroImg from "@/assets/chalet-hero.jpg";
 import logoImg from "@/assets/chalet-logo.jpg";
-import { chalet, orientacoes, comodidades, regras, parceiros, emergencia } from "@/data/chalet";
+import { chalet, chalesUnidades, orientacoes, comodidades, regras, parceiros, emergencia } from "@/data/chalet";
 
 const iconMap: Record<string, typeof Flame> = {
   Flame, Droplets, Waves, Tv, BedDouble, Trees, Wifi, Coffee, Shield, Ambulance,
+  Wind, Mountain, Beef,
 };
 
 interface Props { onGoToExperiences: () => void; }
 
 const HomeView = ({ onGoToExperiences }: Props) => {
-  const [copiedSsid, setCopiedSsid] = useState(false);
-  const [copiedPwd, setCopiedPwd] = useState(false);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [openOrient, setOpenOrient] = useState<string | null>(orientacoes[0]?.title ?? null);
 
-  const copyText = async (text: string, kind: "ssid" | "pwd") => {
+  const copyText = async (text: string, key: string) => {
     await navigator.clipboard.writeText(text);
-    if (kind === "ssid") { setCopiedSsid(true); setTimeout(() => setCopiedSsid(false), 2000); }
-    else { setCopiedPwd(true); setTimeout(() => setCopiedPwd(false), 2000); }
+    setCopiedKey(key);
+    setTimeout(() => setCopiedKey(null), 2000);
     toast.success("Copiado!");
   };
 
@@ -43,15 +44,15 @@ const HomeView = ({ onGoToExperiences }: Props) => {
         <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full bg-accent/20 blur-3xl" />
 
         <div className="relative z-10 flex flex-col items-center text-center px-6 pt-14 pb-10">
-          <div className="flex h-24 w-24 items-center justify-center rounded-full border border-accent/40 bg-primary/40 backdrop-blur-sm shadow-copper overflow-hidden">
-            <img src={logoImg} alt="Logo Chalé Pé de Morro" className="h-full w-full object-cover" />
+          <div className="flex h-24 w-24 items-center justify-center rounded-full border border-accent/40 bg-primary-foreground backdrop-blur-sm shadow-copper overflow-hidden">
+            <img src={logoImg} alt="Logo O Chalé Encantado" className="h-full w-full object-contain p-1" />
           </div>
 
           <h1 className="mt-5 font-display text-[2.4rem] leading-[1.05] tracking-wide">
-            CHALÉ<br />PÉ DE MORRO
+            O CHALÉ<br />ENCANTADO
           </h1>
           <p className="mt-2 text-[10px] uppercase tracking-[0.4em] text-accent-soft">
-            Chalé de luxo · {chalet.location}
+            {chalet.location}
           </p>
 
           <div className="mt-8 flex items-center gap-3 w-full max-w-[220px]">
@@ -61,7 +62,7 @@ const HomeView = ({ onGoToExperiences }: Props) => {
           </div>
 
           <h2 className="mt-6 font-display text-2xl leading-snug text-balance">
-            Bem-vindo ao <em className="not-italic text-accent">Pé de Morro</em>
+            Bem-vindo ao <em className="not-italic text-accent">Chalé Encantado</em>
           </h2>
           <p className="mt-3 text-[13px] leading-relaxed text-primary-foreground/80 max-w-[34ch]">
             Seu guia completo de hospedagem. Toque no chalé abaixo para explorar tudo.
@@ -75,16 +76,16 @@ const HomeView = ({ onGoToExperiences }: Props) => {
             className="group block w-full overflow-hidden rounded-3xl border border-accent/40 bg-primary/40 backdrop-blur-sm shadow-elegant active:scale-[0.99] transition-all"
           >
             <div className="relative h-56 overflow-hidden">
-              <img src={heroImg} alt="Chalé Pé de Morro" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img src={heroImg} alt="O Chalé Encantado" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute top-3 right-3 rounded-full bg-primary/70 backdrop-blur px-3 py-1 text-[10px] uppercase tracking-widest border border-accent/40">
                 Rancho Queimado · SC
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent" />
             </div>
             <div className="px-5 pt-3 pb-5 text-center">
-              <h3 className="font-display text-2xl text-primary-foreground">Chalé Pé de Morro</h3>
+              <h3 className="font-display text-2xl text-primary-foreground">O Chalé Encantado</h3>
               <p className="mt-1 text-xs text-primary-foreground/75 flex items-center justify-center gap-1.5">
-                <MapPin className="h-3 w-3 text-accent" /> Rancho Queimado · SC
+                <MapPin className="h-3 w-3 text-accent" /> Queimada Grande · Rancho Queimado
               </p>
               <p className="mt-3 text-[13px] text-accent inline-flex items-center gap-1.5 font-medium">
                 Toque para explorar <ArrowRight className="h-3.5 w-3.5" />
@@ -94,36 +95,43 @@ const HomeView = ({ onGoToExperiences }: Props) => {
         </div>
       </section>
 
-      {/* WI-FI — card escuro */}
+      {/* WI-FI — card escuro com dois chalés */}
       <section className="rounded-3xl gradient-forest text-primary-foreground p-5 shadow-elegant border border-accent/20">
         <div className="flex items-center gap-2 text-sm font-display">
           <Wifi className="h-4 w-4 text-accent" /> Wi-Fi
         </div>
-        <div className="mt-4 space-y-2.5">
-          <button
-            onClick={() => copyText(chalet.wifi.ssid, "ssid")}
-            className="w-full flex items-center justify-between rounded-2xl bg-primary-foreground/5 border border-accent/20 px-4 py-3 active:scale-[0.99] transition"
-          >
-            <span className="text-xs uppercase tracking-widest opacity-70">Rede</span>
-            <span className="flex items-center gap-2">
-              <span className="font-mono text-sm">{chalet.wifi.ssid}</span>
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                {copiedSsid ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-              </span>
-            </span>
-          </button>
-          <button
-            onClick={() => copyText(chalet.wifi.password, "pwd")}
-            className="w-full flex items-center justify-between rounded-2xl bg-primary-foreground/5 border border-accent/20 px-4 py-3 active:scale-[0.99] transition"
-          >
-            <span className="text-xs uppercase tracking-widest opacity-70">Senha</span>
-            <span className="flex items-center gap-2">
-              <span className="font-mono text-sm">{chalet.wifi.password}</span>
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                {copiedPwd ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-              </span>
-            </span>
-          </button>
+        <div className="mt-4 space-y-5">
+          {chalesUnidades.map((unidade) => (
+            <div key={unidade.nome}>
+              <p className="text-[11px] uppercase tracking-[0.25em] text-accent mb-2">{unidade.nome}</p>
+              <div className="space-y-2.5">
+                <button
+                  onClick={() => copyText(unidade.ssid, `${unidade.nome}-ssid`)}
+                  className="w-full flex items-center justify-between rounded-2xl bg-primary-foreground/5 border border-accent/20 px-4 py-3 active:scale-[0.99] transition"
+                >
+                  <span className="text-xs uppercase tracking-widest opacity-70">Rede</span>
+                  <span className="flex items-center gap-2">
+                    <span className="font-mono text-sm">{unidade.ssid}</span>
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                      {copiedKey === `${unidade.nome}-ssid` ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                    </span>
+                  </span>
+                </button>
+                <button
+                  onClick={() => copyText(unidade.senha, `${unidade.nome}-pwd`)}
+                  className="w-full flex items-center justify-between rounded-2xl bg-primary-foreground/5 border border-accent/20 px-4 py-3 active:scale-[0.99] transition"
+                >
+                  <span className="text-xs uppercase tracking-widest opacity-70">Senha</span>
+                  <span className="flex items-center gap-2">
+                    <span className="font-mono text-sm">{unidade.senha}</span>
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                      {copiedKey === `${unidade.nome}-pwd` ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                    </span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -132,9 +140,9 @@ const HomeView = ({ onGoToExperiences }: Props) => {
         <div className="flex items-center gap-2 text-sm font-display">
           <MapPin className="h-4 w-4 text-accent" /> Localização
         </div>
-        <h3 className="mt-3 font-display text-xl">Rancho Queimado, SC</h3>
+        <h3 className="mt-3 font-display text-xl">Queimada Grande, Rancho Queimado · SC</h3>
         <p className="mt-2 text-[13px] leading-relaxed text-primary-foreground/80">
-          O chalé fica a 15 minutos do centro de Rancho Queimado, em estrada parcialmente asfaltada. Recomendamos chegar antes do entardecer no primeiro dia. Salve a rota offline.
+          O chalé fica em Queimada Grande, Rancho Queimado. Recomendamos chegar antes do entardecer no primeiro dia. Salve a rota offline antes de subir a serra.
         </p>
         <a
           href={chalet.mapsUrl}
@@ -215,11 +223,12 @@ const HomeView = ({ onGoToExperiences }: Props) => {
                 <div>
                   <p className="text-sm font-semibold text-destructive">{r}</p>
                   <p className="mt-1 text-xs text-destructive/80 leading-relaxed">
-                    {i === 0 && "Por favor, respeite o horário para que possamos preparar o chalé para os próximos hóspedes."}
-                    {i === 1 && "Por segurança, nunca coloque roupas ou objetos sobre o calefator a pellet."}
+                    {i === 0 && "A partir das 14h o chalé estará pronto para receber você."}
+                    {i === 1 && "Por favor, respeite o horário para que possamos preparar o chalé para os próximos hóspedes."}
                     {i === 2 && "O cheiro permanece e prejudica a experiência dos próximos hóspedes."}
-                    {i === 3 && "Mantenha a tranquilidade do ambiente e respeite a vizinhança."}
-                    {i === 4 && "Entre em contato com antecedência para verificarmos a possibilidade."}
+                    {i === 3 && "Preserve o sossego do ambiente e respeite a vizinhança."}
+                    {i === 4 && "Por segurança, nunca coloque roupas ou objetos sobre o calefator/lareira."}
+                    {i === 5 && "Mantemos um ambiente tranquilo e familiar para todos os hóspedes."}
                   </p>
                 </div>
               </div>
@@ -283,7 +292,7 @@ const HomeView = ({ onGoToExperiences }: Props) => {
         <div className="rounded-3xl gradient-forest text-primary-foreground p-6 text-center shadow-elegant border border-accent/20">
           <p className="text-[10px] uppercase tracking-[0.3em] opacity-80">Compartilhe a experiência</p>
           <h3 className="mt-1 font-display text-2xl">Siga a gente</h3>
-          <p className="mt-1 text-sm opacity-85">Marque @encantosdorancho nos seus stories.</p>
+          <p className="mt-1 text-sm opacity-85">Marque @ochaleranchoqueimado nos seus stories.</p>
           <a
             href={chalet.instagram}
             target="_blank"
