@@ -17,6 +17,12 @@ export const chalet = {
   wifi: { ssid: "chale 01 encantado", password: "encantado" },
 };
 
+export const parceiroGuia = {
+  nome: "Guia Rancho Queimado",
+  url: "https://guiaranchoqueimado.com.br/index.html",
+  domain: "guiaranchoqueimado.com.br",
+};
+
 export const chalesUnidades = [
   { nome: "Chalé Pomar", ssid: "chale 01 encantado", senha: "encantado" },
   { nome: "Chalé Bosque", ssid: "chale 02 ap360", senha: "88026612" },

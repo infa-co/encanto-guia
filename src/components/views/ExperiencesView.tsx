@@ -1,85 +1,64 @@
-import { useState } from "react";
-import { ArrowLeft, Clock, Sparkles } from "lucide-react";
-import { experiences, type Experience, chalet } from "@/data/chalet";
-import SectionTitle from "@/components/SectionTitle";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import { ExternalLink, Sparkles, MapPin, Utensils, Mountain, Coffee } from "lucide-react";
+import { parceiroGuia } from "@/data/chalet";
+
+const highlights = [
+  { icon: Utensils, label: "Restaurantes" },
+  { icon: Mountain, label: "Passeios" },
+  { icon: Coffee, label: "Cafés & Cervejarias" },
+  { icon: MapPin, label: "Pontos turísticos" },
+];
 
 const ExperiencesView = () => {
-  const [selected, setSelected] = useState<Experience | null>(null);
-
-  if (selected) {
-    return (
-      <div className="-mx-4 -mt-4 animate-fade-up">
-        <div className="relative h-[55vh] min-h-[380px] overflow-hidden hero-overlay">
-          <img src={selected.image} alt={selected.name} className="absolute inset-0 h-full w-full object-cover" />
-          <button
-            onClick={() => setSelected(null)}
-            className="absolute top-5 left-5 z-10 inline-flex items-center justify-center h-10 w-10 rounded-full bg-background/90 backdrop-blur shadow-card text-primary"
-            aria-label="Voltar"
-          >
-            <ArrowLeft className="h-5 w-5" />
-          </button>
-          <div className="absolute bottom-0 inset-x-0 z-10 p-5 text-primary-foreground">
-            <p className="text-[10px] uppercase tracking-[0.3em] opacity-80">Experiência</p>
-            <h1 className="mt-1 font-display text-3xl leading-tight text-balance">{selected.name}</h1>
-          </div>
-        </div>
-
-        <div className="px-4 pt-6 space-y-5">
-          <div className="flex items-baseline justify-between">
-            <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">A partir de</span>
-            <span className="font-display text-3xl text-accent">{selected.price}</span>
-          </div>
-
-          <p className="text-[15px] leading-relaxed text-foreground/85">{selected.description}</p>
-
-          <div className="flex items-start gap-3 rounded-xl bg-secondary/60 border border-border/60 p-4">
-            <Clock className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-            <p className="text-sm text-primary"><span className="font-semibold">Solicite com 1 dia de antecedência.</span> Confirme com o anfitrião pelo WhatsApp.</p>
-          </div>
-
-          <WhatsAppButton
-            size="lg"
-            className="w-full"
-            message={`Olá! Gostaria de solicitar a experiência: ${selected.name} (${selected.price}).`}
-            phone={chalet.whatsapp}
-          />
-        </div>
-      </div>
-    );
-  }
+  const open = () => window.open(parceiroGuia.url, "_blank", "noopener,noreferrer");
 
   return (
-    <div className="space-y-5 animate-fade-up">
-      <header className="pt-2">
-        <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-[11px] font-semibold text-primary">
-          <Sparkles className="h-3.5 w-3.5 text-accent" /> Curadoria do chalé
+    <div className="-mx-4 -mt-4 animate-fade-up">
+      {/* Hero */}
+      <div className="relative h-[42vh] min-h-[320px] overflow-hidden gradient-forest hero-overlay">
+        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top,hsl(var(--accent)/0.6),transparent_60%)]" />
+        <div className="relative z-10 h-full flex flex-col justify-end p-6 text-primary-foreground">
+          <div className="inline-flex self-start items-center gap-2 rounded-full bg-background/15 backdrop-blur-md border border-primary-foreground/20 px-3 py-1 text-[11px] font-semibold tracking-wide">
+            <Sparkles className="h-3.5 w-3.5 text-accent-soft" /> Parceiro oficial
+          </div>
+          <h1 className="mt-3 font-display text-4xl leading-[1.05] text-balance">Guia de Rancho Queimado</h1>
+          <p className="mt-2 text-sm text-primary-foreground/85 max-w-sm">
+            O melhor da região, selecionado para você aproveitar cada momento da estadia.
+          </p>
         </div>
-        <h1 className="mt-3 font-display text-3xl text-primary leading-tight">Experiências exclusivas</h1>
-        <p className="mt-1.5 text-sm text-muted-foreground">Toques especiais para tornar sua estadia memorável.</p>
-      </header>
+      </div>
 
-      <div className="grid gap-4">
-        {experiences.map((exp) => (
-          <article key={exp.id} className="group rounded-2xl bg-card overflow-hidden shadow-card border border-border/50">
-            <div className="relative h-48 overflow-hidden">
-              <img src={exp.image} alt={exp.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <span className="absolute top-3 right-3 rounded-full bg-background/95 backdrop-blur px-3 py-1.5 text-sm font-display text-accent shadow-card">
-                {exp.price}
+      {/* Conteúdo */}
+      <div className="px-4 pt-6 space-y-6">
+        <p className="text-[15px] leading-relaxed text-foreground/85">
+          Restaurantes, passeios, cervejarias, cafés e o melhor da serra catarinense —
+          tudo reunido num guia completo feito pelo nosso parceiro.
+        </p>
+
+        <div className="grid grid-cols-2 gap-3">
+          {highlights.map(({ icon: Icon, label }) => (
+            <div
+              key={label}
+              className="flex items-center gap-3 rounded-2xl bg-card border border-border/60 p-3.5 shadow-soft"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-accent">
+                <Icon className="h-5 w-5" strokeWidth={1.75} />
               </span>
+              <span className="text-sm font-medium text-primary leading-tight">{label}</span>
             </div>
-            <div className="p-4">
-              <h3 className="font-display text-xl text-primary leading-tight">{exp.name}</h3>
-              <p className="mt-1 text-sm text-muted-foreground">{exp.short}</p>
-              <button
-                onClick={() => setSelected(exp)}
-                className="mt-4 w-full inline-flex items-center justify-center rounded-full border border-primary/15 bg-secondary/60 hover:bg-secondary text-primary h-11 px-5 text-sm font-semibold transition active:scale-[0.99]"
-              >
-                Ver detalhes
-              </button>
-            </div>
-          </article>
-        ))}
+          ))}
+        </div>
+
+        <button
+          onClick={open}
+          className="w-full inline-flex items-center justify-center gap-2 rounded-full gradient-copper text-accent-foreground h-14 px-6 text-base font-semibold shadow-copper transition active:scale-[0.99]"
+        >
+          Abrir Guia Completo
+          <ExternalLink className="h-5 w-5" />
+        </button>
+
+        <p className="text-center text-xs text-muted-foreground">
+          Você será direcionado ao site <span className="font-medium text-foreground/80">{parceiroGuia.domain}</span>
+        </p>
       </div>
     </div>
   );

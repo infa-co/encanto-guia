@@ -5,7 +5,7 @@ export type Tab = "inicio" | "checkout" | "experiencias";
 
 const items: { id: Tab; label: string; icon: typeof Home }[] = [
   { id: "inicio", label: "Início", icon: Home },
-  { id: "experiencias", label: "Experiências", icon: Sparkles },
+  { id: "experiencias", label: "Guia Local", icon: Sparkles },
   { id: "checkout", label: "Checkout", icon: ClipboardCheck },
 ];
 
