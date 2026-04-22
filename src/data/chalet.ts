@@ -97,7 +97,7 @@ export const orientacoes = [
 
 export const comodidades = [
   { icon: "Waves", label: "Hidromassagem" },
-  { icon: "Flame", label: "Lareira" },
+  { icon: "Flame", label: "Lareira / Calefator" },
   { icon: "Wind", label: "Ar-condicionado" },
   { icon: "Coffee", label: "Cozinha equipada" },
   { icon: "Trees", label: "Deck / área externa" },
@@ -109,8 +109,9 @@ export const regras = [
   "Check-in a partir das 14h",
   "Check-out até as 11h",
   "Não é permitido fumar dentro do chalé",
+  "Respeitar o silêncio após as 22h",
   "Não colocar objetos sobre o calefator/lareira",
-
+  "Eventos e festas não são permitidos",
 ];
 
 export const checklist = [
@@ -123,8 +124,10 @@ export const checklist = [
 ];
 
 export const parceiros = [
-  { name: "Pizzaria Forno e Serra", phone: "(48) 999128424", whatsapp: "5548999128424", tag: "Comida regional" },
-
+  { name: "Restaurante Serra Mar", phone: "(48) 3275-0000", whatsapp: "5548999000001", tag: "Comida regional" },
+  { name: "Pizzaria do Rancho", phone: "(48) 3275-0001", whatsapp: "5548999000002", tag: "Pizza · Delivery" },
+  { name: "Mercado Central", phone: "(48) 3275-0002", whatsapp: "5548999000003", tag: "Mercado · Bebidas" },
+];
 
 export const emergencia = [
   { icon: "Shield", label: "Polícia Militar", number: "190" },
