@@ -1,47 +1,54 @@
 
 
-## Redirecionamento para o Guia Rancho Queimado
+## Ajustes na aba "Guia Local"
 
-Atualmente a aba "Experiências" abre uma tela interna (`ExperiencesView`) com cards de experiências do chalé (Café Especial, Fondue, etc.). Você quer substituir isso por um redirecionamento ao site parceiro `https://guiaranchoqueimado.com.br/index.html`.
+Dois ajustes na tela de redirecionamento ao parceiro:
 
-### Recomendação: abrir em nova aba (com tela de transição elegante)
+### 1. Correção do nome
+Trocar "Guia **de** Rancho Queimado" por "**Guia Rancho Queimado**" no título do hero e em qualquer outro lugar do app onde apareça. Atualizar também o campo `nome` em `parceiroGuia` (em `src/data/chalet.ts`).
 
-Como é um site externo (parceiro), o ideal é **abrir em nova aba do navegador** preservando o app do hóspede aberto em segundo plano. Assim o hóspede não "perde" o guia do chalé e volta facilmente.
+### 2. Adicionar destaque do "Pacote Guia RQ"
 
-Para manter a experiência premium (e não ser só um link cru), proponho transformar a aba "Experiências" numa **tela de apresentação do parceiro**, com:
+Ótima ideia colocar o pacote nessa aba — ele complementa perfeitamente a apresentação do parceiro e dá um motivo concreto para o hóspede tocar no botão. Proposta de layout:
 
-- Hero com imagem/gradiente da serra
-- Selo "Parceiro oficial"
-- Título: "Guia de Rancho Queimado"
-- Texto curto: "Restaurantes, passeios, cervejarias, cafés e o melhor da região — selecionado pelo nosso parceiro."
-- Botão grande dourado: **"Abrir Guia Completo"** → abre `https://guiaranchoqueimado.com.br/index.html` em nova aba (`target="_blank"`, `rel="noopener noreferrer"`)
-- Pequeno aviso: "Você será direcionado ao site guiaranchoqueimado.com.br"
+Logo abaixo do botão "Abrir Guia Completo" (e antes da nota de redirecionamento), adicionar um **card de oferta em destaque** com:
 
-### Alternativas consideradas (e por que não)
+- Selo no topo: "🎒 Oferta exclusiva"
+- Título: **Pacote Guia RQ**
+- Subtítulo: "Viva o melhor de Rancho Queimado em um único pacote"
+- Bloco de preço com destaque visual:
+  - Valor riscado: ~~R$ 230~~
+  - Valor grande dourado: **R$ 77**
+  - Etiqueta: "em experiências"
+- Botão secundário: **"Quero o pacote"** → abre o mesmo site do parceiro em nova aba (`https://guiaranchoqueimado.com.br/index.html`), já que a compra acontece lá
 
-1. **Redirecionar direto ao tocar na aba** — confuso, o usuário toca em "Experiências" no menu e some do app. Ruim.
-2. **Abrir dentro de um iframe** — muitos sites bloqueiam iframe (X-Frame-Options) e quebra a experiência mobile.
-3. **Manter as experiências antigas + adicionar link** — você disse que quer substituir, então removemos.
+Visual: card com fundo `gradient-forest` (verde escuro), borda dourada (`accent`), preço em destaque com a cor cobre do app, mantendo coerência com o restante do design.
 
 ### Mudanças técnicas
 
 **`src/data/chalet.ts`**
-- Adicionar `parceiroGuia = { url: "https://guiaranchoqueimado.com.br/index.html", nome: "Guia Rancho Queimado" }` para fácil edição futura.
-- Manter `experiences` no arquivo (caso queira reativar depois) ou remover — sugiro **manter comentado** para reuso.
+- Renomear `nome` de `parceiroGuia` para "Guia Rancho Queimado".
+- Adicionar objeto `pacoteGuiaRQ`:
+  ```ts
+  pacoteGuiaRQ = {
+    nome: "Pacote Guia RQ",
+    descricao: "Viva o melhor de Rancho Queimado em um único pacote",
+    precoOriginal: "R$ 230",
+    precoPromocional: "R$ 77",
+    url: "https://guiaranchoqueimado.com.br/index.html"
+  }
+  ```
 
 **`src/components/views/ExperiencesView.tsx`**
-- Reescrever completamente: remover lista de cards e estado de seleção.
-- Nova tela única com hero (gradient-forest + imagem), título, descrição, botão CTA dourado e nota de redirecionamento.
-- Usar ícones `ExternalLink` e `Sparkles` do lucide-react.
-- Manter o padrão visual já usado no app (gradient-forest, accent dourado, animações `animate-fade-up`).
-
-**`src/components/BottomNav.tsx`** (verificar)
-- O label da aba pode continuar "Experiências" ou mudar para **"Guia Local"** / **"Descobrir"** para refletir melhor o conteúdo. Recomendo "Guia Local".
+- Corrigir título do hero para "Guia Rancho Queimado".
+- Adicionar nova seção "card de pacote" entre o botão CTA e a nota de redirecionamento.
+- Importar ícone `Backpack` (ou `Tag` / `Gift`) do lucide-react para o selo.
 
 ### Resultado para o hóspede
 
-1. Toca em "Guia Local" no menu inferior
-2. Vê uma tela bonita apresentando o parceiro
-3. Toca em "Abrir Guia Completo" → nova aba abre com o site do parceiro
-4. Fecha a aba e volta ao app do chalé sem perder contexto
+1. Abre a aba "Guia Local"
+2. Vê hero "Guia Rancho Queimado" + grid de categorias
+3. Vê o botão principal para abrir o guia completo
+4. Logo abaixo, **encontra a oferta do Pacote RQ destacada** (R$ 230 → R$ 77) com botão direto
+5. Toca → abre o site parceiro em nova aba
 
