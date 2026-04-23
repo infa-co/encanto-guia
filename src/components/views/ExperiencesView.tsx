@@ -4,7 +4,7 @@ import { parceiroGuia, pacoteGuiaRQ } from "@/data/chalet";
 const highlights = [
   { icon: Utensils, label: "Restaurantes" },
   { icon: Mountain, label: "Passeios" },
-  { icon: Coffee, label: "Cafés" },
+  { icon: Coffee, label: "Cafés & Cervejarias" },
   { icon: MapPin, label: "Pontos turísticos" },
 ];
 

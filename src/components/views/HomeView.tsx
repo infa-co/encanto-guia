@@ -1,21 +1,58 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import {
-  Wifi, Copy, Check, MapPin, Phone, Instagram, Shield, Ambulance, Flame,
-  Droplets, Waves, Tv, BedDouble, Trees, Coffee, MessageCircle, Sparkles,
-  ArrowRight, Clock, Home as HomeIcon, AlertTriangle, Ban, Send, Truck, ChevronDown,
-  Wind, Mountain, Beef,
+  Wifi,
+  Copy,
+  Check,
+  MapPin,
+  Phone,
+  Instagram,
+  Shield,
+  Ambulance,
+  Flame,
+  Droplets,
+  Waves,
+  Tv,
+  BedDouble,
+  Trees,
+  Coffee,
+  MessageCircle,
+  Sparkles,
+  ArrowRight,
+  Clock,
+  Home as HomeIcon,
+  AlertTriangle,
+  Ban,
+  Send,
+  Truck,
+  ChevronDown,
+  Wind,
+  Mountain,
+  Beef,
 } from "lucide-react";
 import heroImg from "@/assets/chalet-hero.jpg";
 import logoImg from "@/assets/chalet-logo.jpg";
 import { chalet, chalesUnidades, orientacoes, comodidades, regras, parceiros, emergencia } from "@/data/chalet";
 
 const iconMap: Record<string, typeof Flame> = {
-  Flame, Droplets, Waves, Tv, BedDouble, Trees, Wifi, Coffee, Shield, Ambulance,
-  Wind, Mountain, Beef,
+  Flame,
+  Droplets,
+  Waves,
+  Tv,
+  BedDouble,
+  Trees,
+  Wifi,
+  Coffee,
+  Shield,
+  Ambulance,
+  Wind,
+  Mountain,
+  Beef,
 };
 
-interface Props { onGoToExperiences: () => void; }
+interface Props {
+  onGoToExperiences: () => void;
+}
 
 const HomeView = ({ onGoToExperiences }: Props) => {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
@@ -49,11 +86,11 @@ const HomeView = ({ onGoToExperiences }: Props) => {
           </div>
 
           <h1 className="mt-5 font-display text-[2.4rem] leading-[1.05] tracking-wide">
-            O CHALÉ<br />ENCANTADO
+            O CHALÉ
+            <br />
+            ENCANTADO
           </h1>
-          <p className="mt-2 text-[10px] uppercase tracking-[0.4em] text-accent-soft">
-            {chalet.location}
-          </p>
+          <p className="mt-2 text-[10px] uppercase tracking-[0.4em] text-accent-soft">{chalet.location}</p>
 
           <div className="mt-8 flex items-center gap-3 w-full max-w-[220px]">
             <span className="h-px flex-1 bg-accent/40" />
@@ -76,7 +113,11 @@ const HomeView = ({ onGoToExperiences }: Props) => {
             className="group block w-full overflow-hidden rounded-3xl border border-accent/40 bg-primary/40 backdrop-blur-sm shadow-elegant active:scale-[0.99] transition-all"
           >
             <div className="relative h-56 overflow-hidden">
-              <img src={heroImg} alt="O Chalé Encantado" className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img
+                src={heroImg}
+                alt="O Chalé Encantado"
+                className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
               <div className="absolute top-3 right-3 rounded-full bg-primary/70 backdrop-blur px-3 py-1 text-[10px] uppercase tracking-widest border border-accent/40">
                 Rancho Queimado · SC
               </div>
@@ -113,7 +154,11 @@ const HomeView = ({ onGoToExperiences }: Props) => {
                   <span className="flex items-center gap-2">
                     <span className="font-mono text-sm">{unidade.ssid}</span>
                     <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                      {copiedKey === `${unidade.nome}-ssid` ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                      {copiedKey === `${unidade.nome}-ssid` ? (
+                        <Check className="h-3.5 w-3.5" />
+                      ) : (
+                        <Copy className="h-3.5 w-3.5" />
+                      )}
                     </span>
                   </span>
                 </button>
@@ -125,7 +170,11 @@ const HomeView = ({ onGoToExperiences }: Props) => {
                   <span className="flex items-center gap-2">
                     <span className="font-mono text-sm">{unidade.senha}</span>
                     <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                      {copiedKey === `${unidade.nome}-pwd` ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                      {copiedKey === `${unidade.nome}-pwd` ? (
+                        <Check className="h-3.5 w-3.5" />
+                      ) : (
+                        <Copy className="h-3.5 w-3.5" />
+                      )}
                     </span>
                   </span>
                 </button>
@@ -142,7 +191,8 @@ const HomeView = ({ onGoToExperiences }: Props) => {
         </div>
         <h3 className="mt-3 font-display text-xl">Queimada Grande, Rancho Queimado · SC</h3>
         <p className="mt-2 text-[13px] leading-relaxed text-primary-foreground/80">
-          O chalé fica em Queimada Grande, Rancho Queimado. Recomendamos chegar antes do entardecer no primeiro dia. Salve a rota offline antes de subir a serra.
+          O chalé fica em Queimada Grande, Rancho Queimado. Recomendamos chegar antes do entardecer no primeiro dia.
+          Salve a rota offline antes de subir a serra.
         </p>
         <a
           href={chalet.mapsUrl}
@@ -163,7 +213,10 @@ const HomeView = ({ onGoToExperiences }: Props) => {
           {comodidades.map((c) => {
             const Icon = iconMap[c.icon] || Flame;
             return (
-              <div key={c.label} className="rounded-2xl bg-primary-foreground/5 border border-accent/20 p-4 flex flex-col items-center text-center gap-2 min-h-[110px] justify-center">
+              <div
+                key={c.label}
+                className="rounded-2xl bg-primary-foreground/5 border border-accent/20 p-4 flex flex-col items-center text-center gap-2 min-h-[110px] justify-center"
+              >
                 <Icon className="h-6 w-6 text-accent" strokeWidth={1.75} />
                 <p className="text-xs font-medium leading-snug">{c.label}</p>
               </div>
@@ -224,7 +277,8 @@ const HomeView = ({ onGoToExperiences }: Props) => {
                   <p className="text-sm font-semibold text-destructive">{r}</p>
                   <p className="mt-1 text-xs text-destructive/80 leading-relaxed">
                     {i === 0 && "A partir das 14h o chalé estará pronto para receber você."}
-                    {i === 1 && "Por favor, respeite o horário para que possamos preparar o chalé para os próximos hóspedes."}
+                    {i === 1 &&
+                      "Por favor, respeite o horário para que possamos preparar o chalé para os próximos hóspedes."}
                     {i === 2 && "O cheiro permanece e prejudica a experiência dos próximos hóspedes."}
                     {i === 3 && "Preserve o sossego do ambiente e respeite a vizinhança."}
                     {i === 4 && "Por segurança, nunca coloque roupas ou objetos sobre o calefator/lareira."}
@@ -233,35 +287,6 @@ const HomeView = ({ onGoToExperiences }: Props) => {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* DELIVERY / PARCEIROS — card escuro */}
-      <section className="rounded-3xl gradient-forest text-primary-foreground p-5 shadow-elegant border border-accent/20">
-        <div className="flex items-center gap-2 text-sm font-display">
-          <Truck className="h-4 w-4 text-accent" /> Delivery
-        </div>
-        <div className="mt-4 space-y-2.5">
-          {parceiros.map((p) => (
-            <article key={p.name} className="flex items-center gap-3 rounded-2xl bg-primary-foreground/5 border border-accent/25 p-3">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl gradient-copper text-accent-foreground font-display text-lg">
-                {p.name[0]}
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-sm text-primary-foreground truncate">{p.name}</h3>
-                <p className="text-xs text-primary-foreground/70">{p.phone}</p>
-              </div>
-              <a
-                href={`https://wa.me/${p.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-whatsapp text-whatsapp-foreground shadow-card active:scale-95"
-                aria-label={`WhatsApp ${p.name}`}
-              >
-                <MessageCircle className="h-4 w-4" />
-              </a>
-            </article>
           ))}
         </div>
       </section>
@@ -275,7 +300,11 @@ const HomeView = ({ onGoToExperiences }: Props) => {
           {emergencia.map((e) => {
             const Icon = iconMap[e.icon] || Shield;
             return (
-              <a key={e.label} href={`tel:${e.number}`} className="rounded-2xl bg-card border border-border/50 p-4 shadow-soft flex flex-col items-center text-center gap-2 active:scale-95 transition">
+              <a
+                key={e.label}
+                href={`tel:${e.number}`}
+                className="rounded-2xl bg-card border border-border/50 p-4 shadow-soft flex flex-col items-center text-center gap-2 active:scale-95 transition"
+              >
                 <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-destructive/10 text-destructive">
                   <Icon className="h-5 w-5" />
                 </div>

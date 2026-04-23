@@ -51,7 +51,8 @@ export const experiences: Experience[] = [
     name: "Café Especial",
     price: "R$ 89",
     short: "Café da manhã artesanal servido no chalé",
-    description: "Pães frescos, frutas da estação, frios selecionados, geleias artesanais e café especial coado na hora. Servido na varanda ou na sala, conforme sua preferência.",
+    description:
+      "Pães frescos, frutas da estação, frios selecionados, geleias artesanais e café especial coado na hora. Servido na varanda ou na sala, conforme sua preferência.",
     image: cafe,
   },
   {
@@ -59,7 +60,8 @@ export const experiences: Experience[] = [
     name: "Café Fit",
     price: "R$ 79",
     short: "Opção leve e nutritiva",
-    description: "Bowl de iogurte com granola caseira, frutas frescas, ovos, pasta de amendoim, suco verde e café. Para começar o dia em equilíbrio.",
+    description:
+      "Bowl de iogurte com granola caseira, frutas frescas, ovos, pasta de amendoim, suco verde e café. Para começar o dia em equilíbrio.",
     image: cafefit,
   },
   {
@@ -67,7 +69,8 @@ export const experiences: Experience[] = [
     name: "Piquenique Romântico",
     price: "R$ 220",
     short: "Cesta completa para dois ao ar livre",
-    description: "Cesta com queijos, frios, pães, frutas, espumante, taças e manta xadrez. Montamos no melhor mirante da propriedade ao pôr do sol.",
+    description:
+      "Cesta com queijos, frios, pães, frutas, espumante, taças e manta xadrez. Montamos no melhor mirante da propriedade ao pôr do sol.",
     image: piquenique,
   },
   {
@@ -75,7 +78,8 @@ export const experiences: Experience[] = [
     name: "Fondue a Dois",
     price: "R$ 180",
     short: "Clássico fondue de queijo na lareira",
-    description: "Fondue de queijo gruyère e emmental, pães, batatas e legumes. Acompanha taças e ambiente preparado próximo à lareira.",
+    description:
+      "Fondue de queijo gruyère e emmental, pães, batatas e legumes. Acompanha taças e ambiente preparado próximo à lareira.",
     image: fondue,
   },
   {
@@ -83,15 +87,28 @@ export const experiences: Experience[] = [
     name: "Tábua de Frios",
     price: "R$ 145",
     short: "Seleção premium para harmonizar com vinho",
-    description: "Queijos curados, charcutaria artesanal, castanhas, mel, geleias e torradinhas. Perfeita para o final de tarde com vinho.",
+    description:
+      "Queijos curados, charcutaria artesanal, castanhas, mel, geleias e torradinhas. Perfeita para o final de tarde com vinho.",
     image: tabua,
   },
 ];
 
 export const orientacoes = [
-  { icon: "Flame", title: "Lareira", text: "As instruções de uso da lareira estão disponíveis via QR Code dentro do chalé. Em caso de dúvida, chame pelo WhatsApp." },
-  { icon: "Waves", title: "Hidromassagem", text: "As instruções de uso da hidromassagem estão disponíveis via QR Code dentro do chalé. Encha completamente antes de ligar os jatos." },
-  { icon: "Droplets", title: "Água Quente", text: "Pode levar cerca de 40 segundos para a água começar a aquecer. Mantenha a chama do aquecedor ligada durante a estadia." },
+  {
+    icon: "Flame",
+    title: "Lareira",
+    text: "As instruções de uso da lareira estão disponíveis via QR Code dentro do chalé. Em caso de dúvida, chame pelo WhatsApp.",
+  },
+  {
+    icon: "Waves",
+    title: "Hidromassagem",
+    text: "As instruções de uso da hidromassagem estão disponíveis via QR Code dentro do chalé. Encha completamente antes de ligar os jatos.",
+  },
+  {
+    icon: "Droplets",
+    title: "Água Quente",
+    text: "Pode levar cerca de 40 segundos para a água começar a aquecer. Mantenha a chama do aquecedor ligada durante a estadia.",
+  },
   { icon: "Tv", title: "TV / Controles", text: "Os controles da TV estão no móvel em frente à TV." },
 ];
 
@@ -109,8 +126,9 @@ export const regras = [
   "Check-in a partir das 14h",
   "Check-out até as 11h",
   "Não é permitido fumar dentro do chalé",
+  "Respeitar o silêncio após as 22h",
   "Não colocar objetos sobre o calefator/lareira",
-
+  "Eventos e festas não são permitidos",
 ];
 
 export const checklist = [
@@ -121,10 +139,6 @@ export const checklist = [
   "Retirar o lixo",
   "Conferir pertences pessoais",
 ];
-
-export const parceiros = [
-  { name: "Pizzaria Forno e Serra", phone: "(48) 999128424", whatsapp: "5548999128424", tag: "Comida regional" },
-
 
 export const emergencia = [
   { icon: "Shield", label: "Polícia Militar", number: "190" },
