@@ -52,10 +52,7 @@ const CheckoutView = () => {
               </label>
             </li>
           );
-        })}
-      </ul>
 
-      {
   );
 };
 
