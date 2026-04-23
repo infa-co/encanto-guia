@@ -141,10 +141,9 @@ export const checklist = [
 ];
 
 export const parceiros = [
-  { name: "Restaurante Serra Mar", phone: "(48) 3275-0000", whatsapp: "5548999000001", tag: "Comida regional" },
-  { name: "Pizzaria do Rancho", phone: "(48) 3275-0001", whatsapp: "5548999000002", tag: "Pizza · Delivery" },
-  { name: "Mercado Central", phone: "(48) 3275-0002", whatsapp: "5548999000003", tag: "Mercado · Bebidas" },
-];
+  
+  { name: "Pizzaria Forno e Serra", phone: "(48) 999128424", whatsapp: "5548999128424", tag: "Pizza · Delivery" },
+  
 
 export const emergencia = [
   { icon: "Shield", label: "Polícia Militar", number: "190" },
