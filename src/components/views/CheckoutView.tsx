@@ -40,20 +40,22 @@ const CheckoutView = () => {
           const checked = !!done[i];
           return (
             <li key={i}>
-              <label className={`flex items-start gap-3 rounded-2xl border p-4 cursor-pointer transition-all ${checked ? "bg-secondary/80 border-accent/40" : "bg-card border-border/50 shadow-soft"}`}>
-                <Checkbox
-                  checked={checked}
-                  onCheckedChange={(v) => setDone((d) => ({ ...d, [i]: !!v }))}
-                  className="mt-0.5 h-5 w-5 rounded-md border-primary/40 data-[state=checked]:bg-accent data-[state=checked]:border-accent data-[state=checked]:text-accent-foreground"
-                />
-                <span className={`text-[15px] leading-snug ${checked ? "line-through text-muted-foreground" : "text-primary font-medium"}`}>
-                  {item}
-                </span>
-              </label>
-            </li>
-          );
+      <label className={`flex items-start gap-3 rounded-2xl border p-4 cursor-pointer transition-all ${checked ? "bg-secondary/80 border-accent/40" : "bg-card border-border/50 shadow-soft"}`}>
+        <Checkbox
+          checked={checked}
+          onCheckedChange={(v) => setDone((d) => ({ ...d, [i]: !!v }))}
+          className="mt-0.5 h-5 w-5 rounded-md border-primary/40 data-[state=checked]:bg-accent data-[state=checked]:border-accent data-[state=checked]:text-accent-foreground"
+        />
+        <span className={`text-[15px] leading-snug ${checked ? "line-through text-muted-foreground" : "text-primary font-medium"}`}>
+          {item}
+        </span>
+      </label>
+      </li>
+      );
+      })}
+      </ul>
+      </div>
+      );
+      };
 
-  );
-};
-
-export default CheckoutView;
+      export default CheckoutView;
