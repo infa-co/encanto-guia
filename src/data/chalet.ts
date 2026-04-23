@@ -140,11 +140,6 @@ export const checklist = [
   "Conferir pertences pessoais",
 ];
 
-export const parceiros = [
-  
-  { name: "Pizzaria Forno e Serra", phone: "(48) 999128424", whatsapp: "5548999128424", tag: "Pizza · Delivery" },
-  );
-
 export const emergencia = [
   { icon: "Shield", label: "Polícia Militar", number: "190" },
   { icon: "Ambulance", label: "SAMU", number: "192" },
