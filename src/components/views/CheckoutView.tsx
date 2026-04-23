@@ -60,15 +60,7 @@ const CheckoutView = () => {
         <h3 className="font-display text-xl text-primary">Tudo certo?</h3>
         <p className="mt-1 text-sm text-muted-foreground">Avise o anfitrião para finalizarmos seu check-out com carinho.</p>
         <a
-          href={`https://wa.me/${chalet.whatsapp}?text=${encodeURIComponent("Olá! Concluí o checklist e estou saindo do chalé. Obrigado pela hospedagem!")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 w-full inline-flex items-center justify-center gap-2 rounded-full bg-whatsapp text-whatsapp-foreground h-12 px-5 font-semibold shadow-card active:scale-[0.99] transition"
-        >
-          <MessageCircle className="h-4 w-4" /> Avisar anfitrião
-        </a>
-      </div>
-    </div>
+         
   );
 };
 
